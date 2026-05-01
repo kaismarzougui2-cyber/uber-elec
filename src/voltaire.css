@@ -1,0 +1,358 @@
+/* =========================================================
+   VOLTAIRE ÉLECTRICITÉ — Styles complets
+   ========================================================= */
+
+/* ---------- 1. Imports de fontes ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+/* ---------- 2. Variables de couleurs ---------- */
+:root {
+  --bg:            #0a0a0a;
+  --bg-soft:       #171717;
+  --border:        #262626;
+  --border-hover:  #525252;
+  --text:          #f5f5f5;
+  --text-muted:    #a3a3a3;
+  --text-dim:      #525252;
+  --accent:        #facc15;
+  --accent-hover:  #fde047;
+  --danger:        #ef4444;
+}
+
+/* ---------- 3. Reset léger + base ---------- */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #525252;
+}
+
+/* ---------- 4. Familles typographiques ---------- */
+.display {
+  font-family: 'Archivo Black', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ---------- 5. Animations clés ---------- */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.4); }
+  50%      { box-shadow: 0 0 0 12px rgba(250, 204, 21, 0); }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.4; }
+}
+
+.pulse-glow { animation: pulse-glow 2s infinite; }
+.slide-up   { animation: slide-up 0.5s ease-out forwards; }
+.spin       { animation: spin 1s linear infinite; }
+
+/* ---------- 6. Décors d'arrière-plan ---------- */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(250, 204, 21, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(250, 204, 21, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.bolt-pattern {
+  background:
+    radial-gradient(circle at 20% 30%, rgba(250, 204, 21, 0.08), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(250, 204, 21, 0.06), transparent 40%);
+}
+
+/* ---------- 7. Boutons ---------- */
+.btn-primary {
+  background: var(--accent);
+  color: #000;
+  padding: 0.75rem 1.5rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.03em;
+}
+.btn-primary:hover  { background: var(--accent-hover); transform: translateX(2px); }
+.btn-primary:disabled {
+  background: var(--border);
+  color: var(--text-dim);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  padding: 0.75rem 1.5rem;
+  font-weight: 700;
+  border: 1px solid #404040;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+}
+.btn-ghost:hover { border-color: var(--accent); }
+
+/* ---------- 8. Champs de formulaire ---------- */
+.field {
+  width: 100%;
+  background: var(--bg-soft);
+  border: 2px solid var(--border);
+  outline: none;
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--text);
+  transition: border-color 0.2s;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+.field:focus { border-color: var(--accent); }
+
+.field-mono {
+  font-family: 'JetBrains Mono', monospace;
+  background: var(--bg);
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6875rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ---------- 9. Cartes & conteneurs ---------- */
+.card {
+  background: rgba(23, 23, 23, 0.5);
+  border: 2px solid var(--border);
+  padding: 1.25rem;
+  transition: border-color 0.2s;
+}
+.card:hover  { border-color: var(--border-hover); }
+.card.active { border-color: var(--accent); background: rgba(250, 204, 21, 0.05); }
+
+.card-accent {
+  background: rgba(250, 204, 21, 0.05);
+  border: 2px solid rgba(250, 204, 21, 0.3);
+  padding: 1.25rem;
+}
+
+/* ---------- 10. Badges ---------- */
+.badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.5625rem;
+  letter-spacing: 0.1em;
+  padding: 0.125rem 0.375rem;
+  flex-shrink: 0;
+}
+.badge-urgent { background: var(--danger); color: #fff; }
+.badge-prime  { background: var(--accent); color: #000; }
+
+/* ---------- 11. Indicateur d'étapes ---------- */
+.step-dot {
+  width: 1.75rem;
+  height: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.step-dot.todo { background: var(--border);  color: var(--text-dim); }
+.step-dot.now  { background: var(--accent);  color: #000; animation: pulse-glow 2s infinite; }
+.step-dot.done { background: var(--accent);  color: #000; }
+
+.step-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.step-line.done { background: var(--accent); }
+
+/* ---------- 12. Logo éclair ---------- */
+.logo-bolt {
+  width: 2.25rem;
+  height: 2.25rem;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(3deg);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+.logo-bolt:hover { transform: rotate(0deg); }
+
+/* ---------- 13. Spinner ---------- */
+.spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-top-color: #000;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* ---------- 14. Sticky footers de navigation ---------- */
+.sticky-bar {
+  position: sticky;
+  bottom: 0;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid var(--border);
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 2rem -1.5rem 0;
+}
+
+/* ---------- 15. Navigation principale ---------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ---------- 16. Utilitaires ---------- */
+.divider        { height: 1px; background: var(--border); margin: 0.75rem 0; }
+.text-accent    { color: var(--accent); }
+.text-muted     { color: var(--text-muted); }
+.text-dim       { color: var(--text-dim); }
+
+/* ---------- 17. Dot animé (badge disponible) ---------- */
+.dot-live {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: inline-block;
+  animation: dot-pulse 2s infinite;
+}
+
+/* ---------- 18. Grille de stats ---------- */
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-top: 5rem;
+}
+.trust-cell {
+  background: var(--bg);
+  padding: 1.5rem;
+}
+
+/* ---------- 19. Grille de services ---------- */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+/* ---------- 20. Grille de jours ---------- */
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+}
+
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.5rem;
+}
+
+/* ---------- 21. Layout deux colonnes ---------- */
+.layout-2col {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* ---------- 22. Bouton de date/heure ---------- */
+.slot-btn {
+  padding: 0.75rem 0.25rem;
+  text-align: center;
+  border: 2px solid var(--border);
+  background: rgba(23, 23, 23, 0.5);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+  width: 100%;
+}
+.slot-btn:hover:not(:disabled):not(.active) { border-color: var(--border-hover); }
+.slot-btn.active  { border-color: var(--accent); background: var(--accent); color: #000; }
+.slot-btn:disabled {
+  border-color: var(--bg-soft);
+  background: var(--bg-soft);
+  color: var(--text-dim);
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+/* ---------- 23. Icône dans champ ---------- */
+.field-wrapper {
+  position: relative;
+}
+.field-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-dim);
+  display: flex;
+  pointer-events: none;
+}
+.field-wrapper .field { padding-left: 2.25rem; }
+
+/* ---------- 24. Responsive de base ---------- */
+@media (max-width: 768px) {
+  .trust-grid { grid-template-columns: repeat(2, 1fr); }
+  .days-grid  { grid-template-columns: repeat(4, 1fr); }
+  .time-grid  { grid-template-columns: repeat(3, 1fr); }
+  .layout-2col { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .sticky-bar { margin: 2rem -1rem 0; padding: 1rem; }
+}
